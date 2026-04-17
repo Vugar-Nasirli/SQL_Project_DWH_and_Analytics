@@ -10,6 +10,7 @@ This project demonstrates the end-to-end process of building a **modern SQL Data
 *   **Database Engine:** SQL Server (Express Edition).
 *   **SQL Client:** SQL Server Management Studio (SSMS).
 *   **Project Management:** Notion (for epics, tasks, and progress tracking).
+  [DWH Project Management](https://quick-spoonbill-3c9.notion.site/Data-Warehouse-Project-33facaabdda280beae6ef725f5ad5714?pvs=143)
 *   **Design & Diagramming:** Draw.io (for architecture, data flow, and modeling diagrams).
 *   **Version Control:** Git & GitHub (for code repository and portfolio showcase).
 
