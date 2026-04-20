@@ -44,9 +44,15 @@ SELECT
 	pn.prd_key AS product_number,
 	pn.prd_nm AS product_name,
 	pn.cat_id AS category_id,
-	pc.cat AS category,
-	pc.subcat AS subcategory,
-	pc.maintenance AS maintenance,
+	CASE
+		WHEN pn.cat_id = 'CO_PE' THEN 'Components'
+		ELSE pc.cat
+	END AS category,
+	CASE
+		WHEN pn.cat_id = 'CO_PE' THEN 'Pedal'
+		ELSE pc.subcat
+	END AS subcategory,
+	ISNULL(pc.maintenance, 'No') AS maintenance,
 	pn.prd_cost AS cost,
 	pn.prd_line AS product_line,
 	pn.prd_start_dt AS product_start_date
