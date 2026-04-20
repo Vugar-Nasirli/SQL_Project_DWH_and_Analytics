@@ -71,9 +71,18 @@ SELECT
 	sd.sls_ord_num AS order_number,
 	p.product_key,
 	c.customer_key,
-	sd.sls_order_dt AS order_date,
-	sd.sls_ship_dt AS shipping_date,
-	sd.sls_due_dt AS due_date,
+	CASE
+		WHEN sd.sls_order_dt IS NULL THEN DATEADD(DAY, -7, sd.sls_ship_dt)
+		ELSE sd.sls_order_dt
+	END AS order_date,
+	CASE
+		WHEN sd.sls_ship_dt IS NULL THEN DATEADD(DAY, 7, sd.sls_order_dt)
+		ELSE sd.sls_ship_dt
+	END AS shipping_date,
+	CASE
+		WHEN sd.sls_due_dt IS NULL THEN DATEADD(DAY, 7, sd.sls_ship_dt)
+		ELSE sd.sls_due_dt
+	END AS due_date,
 	sd.sls_sales AS sales,
 	sd.sls_quantity AS quantity,
 	sd.sls_price AS price
