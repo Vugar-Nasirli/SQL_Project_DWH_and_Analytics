@@ -1,4 +1,4 @@
-# **Modern SQL Data Warehouse Project: CRM & ERP Integration**
+# **Modern SQL Data Warehouse Project: CRM & ERP Integration | End-to-end Data Project with EDA (Exploratory Data Analysis) and ADA (Advanced Data Analysis)**
 
 This project demonstrates the end-to-end process of building a **modern SQL Data Warehouse** from scratch using real-world data engineering practices. It follows the **Medallion Architecture** to transform raw CSV data from two source systems (CRM and ERP) into a business-ready **Star Schema** for analytics and reporting.
 
@@ -115,3 +115,76 @@ Detail the final analytical model provided for business consumption.
 *   **Data Catalog:** Developed a detailed dictionary for the Gold layer, describing every column, data type, and providing example values for business users.
 *   **Quality Checks:** Created a `tests` script to validate the integrity of the final model (e.g., checking for orphans where a Fact key doesn't exist in a Dimension).
 *   **Naming Convention:** For Professional Engineering best practices I created file for controlling naming of each object within project.
+
+***
+
+# Data Analytics Part: From Exploration to Advanced Insights
+
+## Project Overview
+This project demonstrates a comprehensive SQL-based analytical workflow, transitioning from initial **Exploratory Data Analysis (EDA)** to **Advanced Data Analytics (ADA)**. The goal is to transform raw transactional data into actionable business intelligence by uncovering trends, segmenting customers, and generating complex reports for stakeholders.
+
+## Technical Stack
+*   **Language:** SQL (T-SQL/SQL Server)
+*   **Tool:** SQL Server Management Studio (SSMS)
+*   **Concepts:** Data Warehousing, Data Profiling, Window Functions, CTEs, and Data Modeling.
+
+## Phase 1: Exploratory Data Analysis (EDA)
+The first phase focuses on understanding the dataset's structure and uncovering basic insights through **Data Profiling**.
+
+### 1. Database & Metadata Exploration
+*   **Technique:** Querying system tables like `information_schema.tables` and `information_schema.columns` to map the database structure and identify table relationships.
+
+### 2. Dimensions and Measures Framework
+*   **Practice:** Categorizing data into **Dimensions** (descriptive attributes like country or category) and **Measures** (numeric values suitable for aggregation like sales or quantity).
+*   **Technique:** Using `DISTINCT` to identify unique values and understand the cardinality of dimensions.
+
+### 3. Date Boundaries & Time Span
+*   **Technique:** Utilizing `MIN` and `MAX` on date columns to determine the business's time horizon (e.g., finding a 4-year range of sales).
+
+### 4. Magnitude and Ranking Analysis
+*   **Magnitude:** Comparing measures across dimensions (e.g., Total Revenue by Country) to identify key business drivers.
+*   **Ranking:** Identifying top and bottom performers using the `TOP` keyword or **Ranking Window Functions** like `ROW_NUMBER()`.
+
+---
+
+## Phase 2: Advanced Data Analytics (ADA)
+The second phase applies advanced SQL techniques to solve complex business questions and track performance over time.
+
+### 1. Change Over Time & Seasonality
+*   **Technique:** Using date functions (`YEAR`, `MONTH`, `DATETRUNC`) to track how metrics like total sales evolve, helping to identify seasonal patterns (e.g., peak sales in December).
+
+### 2. Cumulative Analysis
+*   **Technique:** Implementing **Aggregate Window Functions** to calculate "Running Totals" and "Moving Averages" to visualize business growth and progression.
+
+### 3. Performance Analysis (Year-over-Year)
+*   **Technique:** Using the `LAG()` value window function to compare current year sales against the previous year (YoY) or the average.
+*   **Logic:** Applying `CASE WHEN` to flag performance as "Increase," "Decrease," or "Above/Below Average".
+
+### 4. Part-to-Whole Analysis
+*   **Technique:** Calculating the percentage contribution of individual categories to the overall total (e.g., finding that Bikes contribute ~69% of revenue).
+
+### 5. Data Segmentation
+*   **Practice:** Converting measures into new dimensions via `CASE WHEN` to group data into meaningful ranges.
+*   **Examples:** Segmenting products into cost ranges (Low, Medium, High) and categorizing customers into "VIP," "Regular," or "New" based on their spending and lifespan.
+
+---
+
+## Phase 3: Strategic Reporting & KPIs
+The final stage involves consolidating all metrics into a "Gold Layer" of views for stakeholders and visualization tools.
+
+### Key Performance Indicators (KPIs) Developed:
+*   **Recency:** Months since the customer's last order.
+*   **Average Order Value (AOV):** Total Revenue divided by Total Orders.
+*   **Average Monthly Spend:** Total Revenue divided by the customer's lifespan in months.
+
+### Final Deliverable:
+Created consolidated **SQL Views** (e.g., `gold.report_customers`, `gold.report_products`) to provide a 360-degree view of business entities, ready for immediate use in Tableau or PowerBI dashboards.
+
+---
+
+## How to Use This Project
+1.  **Database Setup:** Execute the provided `init_database.sql` script to create the schema and load the data.
+2.  **Scripts:** Navigate through the folders categorized by analysis type (EDA, Change Over Time, Segmentation, etc.).
+3.  **Reports:** Run the "Report" scripts to generate the final analytical views.
+
+***
